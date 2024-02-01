@@ -1,0 +1,53 @@
+body {
+  margin: 0;
+  background-color: #006900;
+}
+header {
+  width: 100%;
+  color: white;
+  display: flex;
+}
+.points {
+  font-size: 40px;
+  padding: 10px 20px;
+  margin: 10px 20px 10px 50px;
+  background-color: #73ff5d;
+}
+.pomme {
+  max-width: 50px;
+  object-fit: contain;
+}
+
+main {
+  display: flex;
+  padding: 20px 10px 10px 10px;
+}
+
+.sectiongauche {
+  width: 25%;
+}
+.regles {
+  color: white;
+  text-align: center;
+  padding: 10px 20px;
+  background-color: #73ff5d;
+  border-radius: 15px;
+  width: 50%;
+  margin: 50px 0 0 40px;
+}
+
+.plateau {
+  background-color: #73ff5d;
+  width: 960px;
+  height: 500px;
+  display: grid;
+  grid-template-columns: repeat(48, 20px);
+  grid-template-rows: repeat(25, 20px);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.serpent {
+  background-color: red;
+  grid-area: 1 / 1 / 2 / 2;
+}
