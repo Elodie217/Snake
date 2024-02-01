@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   background-color: #006900;
@@ -48,6 +52,6 @@ main {
 }
 
 .serpent {
-  background-color: red;
-  grid-area: 1 / 1 / 2 / 2;
+  background-color: rgb(82, 82, 245);
+  z-index: 2;
 }
