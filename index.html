@@ -5,21 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Snake</title>
     <link rel="stylesheet" href="style.css" />
-    <script src="script.js" defer></script>
+    <script src="scripts/script.js" defer></script>
+    <script src="scripts/popup.js" defer></script>
   </head>
   <body>
     <header>
-      <div class="points">0</div>
-      <img src="medias/pomme.png" alt="Fruit" class="pomme" />
+      <img src="medias/logoclair2.png" alt="Logo Snake" class="logo" />
+      <div class="divpoints">
+        <div class="points pointsstyle">0</div>
+        <img src="medias/pommerouge.png" alt="Fruit" class="pomme" />
+
+        <div class="highScore pointsstyle">0</div>
+        <img src="medias/trophee.png" alt="Trophée" class="trophee" />
+      </div>
     </header>
     <main>
       <section class="sectiongauche">
-        <div class="regles">Comment jouer ?</div>
+        <div class="regles">Start</div>
+        <div class="regles btnCommentJouer" onclick="ouvrirpopup()">
+          Comment jouer ?
+        </div>
       </section>
       <section class="plateau">
-        <div class="serpent"></div>
         <div class="fruit"></div>
       </section>
     </main>
+
+    <!--Pop-up règle-->
+    <section class="reglePopUp invisibility">
+      <img
+        src="medias/marque-de-croix.png"
+        alt="Croix pour fermer"
+        class="croixfermee"
+        onclick="fermerCroix()"
+      />
+      <h2>Comment jouer ?</h2>
+      <p>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolores, quod
+        placeat nulla explicabo dolorum mollitia accusantium accusamus minus eos
+        doloremque cum ad consequatur optio. Corporis porro adipisci
+        necessitatibus accusantium suscipit?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam nihil
+        obcaecati iure fuga itaque excepturi omnis architecto reprehenderit,
+        perspiciatis, et, eius recusandae? Voluptates, consequuntur.
+        Reprehenderit, earum. Cupiditate possimus aliquid rerum.
+      </p>
+    </section>
+    <div class="flou invisibility"></div>
   </body>
 </html>

@@ -4,27 +4,50 @@ html {
 
 body {
   margin: 0;
-  background-color: #006900;
+  background-image: url(medias/2.png);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 header {
   width: 100%;
   color: white;
   display: flex;
+  justify-content: space-between;
 }
-.points {
+
+.logo {
+  width: 10%;
+  object-fit: contain;
+  margin: 10px 10% 0 5%;
+}
+
+.divpoints {
+  display: flex;
+  align-items: center;
+  margin-right: 5%;
+}
+.pointsstyle {
   font-size: 40px;
   padding: 10px 20px;
   margin: 10px 20px 10px 50px;
-  background-color: #73ff5d;
+  background-color: #72c65d;
 }
 .pomme {
-  max-width: 50px;
+  width: 50px;
+  object-fit: contain;
+}
+.divmeilleurScore {
+  display: flex;
+  align-items: center;
+}
+.trophee {
+  width: 50px;
   object-fit: contain;
 }
 
 main {
   display: flex;
-  padding: 20px 10px 10px 10px;
+  padding: 10px 10px 10px 10px;
 }
 
 .sectiongauche {
@@ -34,14 +57,17 @@ main {
   color: white;
   text-align: center;
   padding: 10px 20px;
-  background-color: #73ff5d;
+  background-color: #72c65d;
   border-radius: 15px;
   width: 50%;
   margin: 50px 0 0 40px;
 }
+.btnCommentJouer:hover {
+  cursor: pointer;
+}
 
 .plateau {
-  background-color: #73ff5d;
+  background-color: #72c65dbf;
   width: 960px;
   height: 500px;
   display: grid;
@@ -52,6 +78,49 @@ main {
 }
 
 .serpent {
-  background-color: rgb(82, 82, 245);
+  background-color: #177400;
+  z-index: 1;
+}
+
+.invisibility {
+  visibility: hidden;
+}
+
+.fruit {
+  background-image: url(medias/pommerouge.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+/*Règle Pop Up*/
+.reglePopUp {
+  position: fixed;
+  border: 2px solid #177400;
+  border-radius: 15px;
+  width: 50%;
+  margin: 100px 25% 0;
+  z-index: 3;
+  top: 0;
+  padding: 10px 20px;
+}
+.croixfermee {
+  width: 5%;
+  margin: 0 0 0 95%;
+}
+.croixfermee:hover {
+  cursor: pointer;
+}
+.reglePopUp h2 {
+  text-align: center;
+  font-size: 30px;
+  margin: 5px 0 20px;
+}
+.flou {
+  backdrop-filter: blur(5px);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0px;
   z-index: 2;
 }
