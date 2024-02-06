@@ -10,6 +10,7 @@ let couleurserpent = document.querySelectorAll(".serpent");
 let couleurhover = document.querySelectorAll(".couleurhover");
 let borderpopup = document.querySelector(".reglePopUp");
 let nommode = document.querySelector(".mode");
+let scorescouleurs = document.querySelectorAll(".pointsstyle");
 
 couleurserpent.forEach((element) => {
   element.classList.add("serpentvert");
@@ -34,6 +35,11 @@ modeprairie.addEventListener("click", () => {
   pomme.src = "medias/pommerouge.png";
   pommeplateau.style.backgroundImage = "url(medias/pommerouge.png)";
   bcgplateau.style.backgroundColor = "#72c65dbf";
+
+  scorescouleurs.forEach((element) => {
+    element.style.color = "#177400";
+    element.style.textShadow = "1px 2px 20px #ffffff";
+  });
 
   couleurhover.forEach((element) => {
     element.classList.add("couleurclairehover");
@@ -64,6 +70,11 @@ modenuit.addEventListener("click", () => {
   pomme.src = "medias/pommedore.png";
   pommeplateau.style.backgroundImage = "url(medias/pommedore.png)";
   bcgplateau.style.backgroundColor = "rgb(30 73 77 / 76%)";
+
+  scorescouleurs.forEach((element) => {
+    element.style.color = "#ffffff";
+    element.style.textShadow = "1px 2px 20px black";
+  });
 
   couleurhover.forEach((element) => {
     element.classList.remove("couleurclairehover");

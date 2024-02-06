@@ -1,8 +1,3 @@
-//Local storage//
-let highScoreaffichage = document.querySelector(".highScore");
-let highScore = localStorage.getItem("high-score");
-highScoreaffichage.innerText = highScore;
-
 //Varaibles
 let body = document.body;
 let x = 3;
@@ -23,23 +18,55 @@ let moyen = document.querySelector(".moyen");
 let difficile = document.querySelector(".difficile");
 let extreme = document.querySelector(".extreme");
 let menuniveaux = document.querySelector(".niveaux");
+let niveauxchoisi = "facile";
 
 facile.addEventListener("click", () => {
   vitesse = 200;
   menuniveaux.innerText = "Niveau facile";
+  niveauxchoisi = "facile";
+  updatehightscore();
 });
 moyen.addEventListener("click", () => {
   vitesse = 100;
   menuniveaux.innerText = "Niveau moyen";
+  niveauxchoisi = "moyen";
+  updatehightscore();
 });
 difficile.addEventListener("click", () => {
   vitesse = 80;
   menuniveaux.innerText = "Niveau difficile";
+  niveauxchoisi = "difficile";
+  updatehightscore();
 });
 extreme.addEventListener("click", () => {
   vitesse = 50;
   menuniveaux.innerText = "Niveau extême";
+  niveauxchoisi = "extreme";
+  updatehightscore();
 }); ///Je pense qu'on peut faire un objet ici ///
+
+//Local storage//
+let highScoreaffichage = document.querySelector(".highScore");
+let highScore = 0;
+
+function updatehightscore() {
+  switch (niveauxchoisi) {
+    case "facile":
+      highScore = localStorage.getItem("high-score-facile");
+      break;
+    case "moyen":
+      highScore = localStorage.getItem("high-score-moyen");
+      break;
+    case "difficile":
+      highScore = localStorage.getItem("high-score-difficile");
+      break;
+    case "extreme":
+      highScore = localStorage.getItem("high-score-extreme");
+      break;
+  }
+  highScoreaffichage.innerText = `Meilleur score ${highScore}`;
+}
+updatehightscore();
 
 /////Start/////
 function start() {
@@ -185,7 +212,22 @@ function mangerfruit() {
 function meilleurScore() {
   if (conterpoint > highScore) {
     highScore = conterpoint;
-    highScoreaffichage.innerText = highScore;
+    highScoreaffichage.innerText = `Meilleur score ${highScore}`;
+    switch (niveauxchoisi) {
+      case "facile":
+        localStorage.setItem("high-score-facile", highScore);
+        break;
+      case "moyen":
+        localStorage.setItem("high-score-moyen", highScore);
+        break;
+      case "difficile":
+        localStorage.setItem("high-score-difficile", highScore);
+        break;
+      case "extreme":
+        localStorage.setItem("high-score-extreme", highScore);
+        break;
+    }
+
     localStorage.setItem("high-score", highScore);
   }
 }
