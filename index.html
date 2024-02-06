@@ -4,35 +4,58 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Snake</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="styles/niveaux.css" />
     <script src="scripts/script.js" defer></script>
     <script src="scripts/popup.js" defer></script>
+    <script src="scripts/menu.js" defer></script>
+    <script src="scripts/bonus-malus.js" defer></script>
   </head>
   <body>
     <header>
       <img src="medias/logoclair2.png" alt="Logo Snake" class="logo" />
       <div class="divpoints">
-        <div class="points pointsstyle">0</div>
+        <div class="points pointsstyle backgroundcolor">0</div>
         <img src="medias/pommerouge.png" alt="Fruit" class="pomme" />
 
-        <div class="highScore pointsstyle">0</div>
-        <img src="medias/trophee.png" alt="Trophée" class="trophee" />
+        <div class="highScore pointsstyle backgroundcolor">0</div>
+        <img src="medias/trophee2.png" alt="Trophée" class="trophee" />
       </div>
     </header>
     <main>
+      <!--Menus-->
       <section class="sectiongauche">
-        <div class="regles">Start</div>
-        <div class="regles btnCommentJouer" onclick="ouvrirpopup()">
+        <div class="menuniveaux">
+          <div class="niveaux backgroundcolor">Niveau facile</div>
+          <ul class="listeniveau backgroundcolor">
+            <li class="facile couleurhover">Niveau facile</li>
+            <li class="moyen couleurhover">Niveau moyen</li>
+            <li class="difficile couleurhover">Niveau difficile</li>
+            <li class="extreme couleurhover">Niveau extrême</li>
+          </ul>
+        </div>
+
+        <div class="menumode">
+          <div class="mode backgroundcolor">Prairie</div>
+          <ul class="listemode backgroundcolor">
+            <li class="modeprairie couleurhover">Prairie</li>
+            <li class="modenuit couleurhover">Nuit</li>
+          </ul>
+        </div>
+
+        <div class="btnCommentJouer backgroundcolor" onclick="ouvrirpopup()">
           Comment jouer ?
         </div>
       </section>
+
+      <!--Plateau-->
       <section class="plateau">
         <div class="fruit"></div>
       </section>
     </main>
 
     <!--Pop-up règle-->
-    <section class="reglePopUp invisibility">
+    <section class="reglePopUp backgroundcolor invisibility">
       <img
         src="medias/marque-de-croix.png"
         alt="Croix pour fermer"

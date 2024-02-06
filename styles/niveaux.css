@@ -1,0 +1,55 @@
+.niveaux,
+.mode {
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 15px;
+  width: fit-content;
+  margin: 20px 0 0;
+}
+.menuniveaux,
+.menumode {
+  position: relative;
+  display: inline-block;
+  width: 50%;
+  margin: 20px 18%;
+}
+.menuniveaux {
+  margin-top: 50px;
+}
+.listeniveau,
+.listemode {
+  display: none;
+  min-width: 200px;
+  position: absolute;
+  padding-inline-start: 0px;
+  margin-top: 0px;
+  border-radius: 15px;
+}
+
+.listeniveau li,
+.listemode li {
+  color: white;
+  padding: 10px;
+  text-decoration: none;
+  display: block;
+}
+.listeniveau li:hover,
+.listemode li:hover {
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.couleurclairehover:hover {
+  background-color: #88ca79;
+}
+.couleursombrehover:hover {
+  background-color: rgb(42 108 114);
+}
+
+.menuniveaux:hover .listeniveau,
+.menumode:hover .listemode {
+  display: block;
+  z-index: 2;
+}

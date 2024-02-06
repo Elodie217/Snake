@@ -11,10 +11,37 @@ let interval = "";
 let plateau = document.querySelector(".plateau");
 let direction = "";
 let serpent = [];
+let fruitX = "";
+let fruitY = "";
+let couleurmode = "serpentvert";
+let mauvaisecouleurmode = "serpentnoir";
 
+////Vitesse////
 let vitesse = 200;
+let facile = document.querySelector(".facile");
+let moyen = document.querySelector(".moyen");
+let difficile = document.querySelector(".difficile");
+let extreme = document.querySelector(".extreme");
+let menuniveaux = document.querySelector(".niveaux");
 
-/////Start*/
+facile.addEventListener("click", () => {
+  vitesse = 200;
+  menuniveaux.innerText = "Niveau facile";
+});
+moyen.addEventListener("click", () => {
+  vitesse = 100;
+  menuniveaux.innerText = "Niveau moyen";
+});
+difficile.addEventListener("click", () => {
+  vitesse = 80;
+  menuniveaux.innerText = "Niveau difficile";
+});
+extreme.addEventListener("click", () => {
+  vitesse = 50;
+  menuniveaux.innerText = "Niveau extême";
+}); ///Je pense qu'on peut faire un objet ici ///
+
+/////Start/////
 function start() {
   plateau.innerHTML += "<div class=serpent></div>";
   plateau.innerHTML += "<div class=serpent></div>";
@@ -22,10 +49,17 @@ function start() {
   x = 3;
   y = 3;
   serpent = document.querySelectorAll(".serpent");
+
+  serpent[0].classList.add(couleurmode);
+  serpent[0].classList.remove(mauvaisecouleurmode);
+  serpent[1].classList.add(couleurmode);
+  serpent[1].classList.remove(mauvaisecouleurmode);
+
   serpent[0].style.gridColumn = x;
   serpent[0].style.gridRow = y;
   serpent[1].style.gridColumn = x - 1;
   serpent[1].style.gridRow = y;
+  creerfruit();
 }
 
 start();
@@ -44,7 +78,8 @@ document.addEventListener("keydown", (event) => {
 
     interval = setInterval(() => {
       y = y - 1;
-      mouvementserpent();
+      sortieSerpent();
+      serpentSeMordLaQueue();
       mangerfruit();
     }, vitesse);
   } else if (nomTouche == "ArrowDown" && direction !== "up") {
@@ -52,7 +87,8 @@ document.addEventListener("keydown", (event) => {
     direction = "down";
     interval = setInterval(() => {
       y = y + 1;
-      mouvementserpent();
+      sortieSerpent();
+      serpentSeMordLaQueue();
       mangerfruit();
     }, vitesse);
   } else if (nomTouche == "ArrowRight" && direction !== "left") {
@@ -60,7 +96,8 @@ document.addEventListener("keydown", (event) => {
     direction = "right";
     interval = setInterval(() => {
       x = x + 1;
-      mouvementserpent();
+      sortieSerpent();
+      serpentSeMordLaQueue();
       mangerfruit();
     }, vitesse);
   } else if (nomTouche == "ArrowLeft" && direction !== "right") {
@@ -68,7 +105,8 @@ document.addEventListener("keydown", (event) => {
     direction = "left";
     interval = setInterval(() => {
       x = x - 1;
-      mouvementserpent();
+      sortieSerpent();
+      serpentSeMordLaQueue();
       mangerfruit();
     }, vitesse);
   }
@@ -76,10 +114,11 @@ document.addEventListener("keydown", (event) => {
 
 ////Serpent////
 
-//////////////////
 function creerserpent() {
   let newSerpent = document.createElement("div");
-  newSerpent.classList.add("serpent", "invisibility");
+  newSerpent.classList.add("serpent", "invisibility", couleurmode);
+  newSerpent.classList.remove(mauvaisecouleurmode);
+
   plateau.appendChild(newSerpent);
   setTimeout(() => {
     newSerpent.classList.remove("invisibility");
@@ -88,7 +127,7 @@ function creerserpent() {
   return newSerpent;
 }
 
-function mouvementserpent() {
+function sortieSerpent() {
   if (x <= 48 && x > 0 && y <= 25 && y > 0) {
     positionserpent();
   } else {
@@ -103,16 +142,22 @@ function positionserpent() {
     serpent[i].style.gridRow = serpent[i - 1].style.gridRow;
   }
 
-  // Réglage du premier élément du corps du serpent à la position actuelle du serpent
   serpent[0].style.gridColumn = x;
   serpent[0].style.gridRow = y;
 }
 
-/////////////////
+function serpentSeMordLaQueue() {
+  for (let i = serpent.length - 1; i > 0; i--) {
+    if (
+      serpent[0].style.gridColumn === serpent[i].style.gridColumn &&
+      serpent[0].style.gridRow === serpent[i].style.gridRow
+    ) {
+      gameover();
+    }
+  }
+}
 
 ////Fruits////
-let fruitX = "";
-let fruitY = "";
 
 function creerfruit() {
   let fruit = document.querySelector(".fruit");
@@ -124,12 +169,8 @@ function creerfruit() {
   fruit.style.gridRow = fruitY;
 }
 
-creerfruit(); // A mettre dans une fonction start //
-
 let point = document.querySelector(".points");
 let conterpoint = 0;
-// let highScoreaffichage = document.querySelector(".highScore");
-// let highScore = 0;
 
 function mangerfruit() {
   if (x == fruitX && y == fruitY) {
@@ -158,6 +199,7 @@ function gameover() {
   point.innerText = conterpoint;
 }
 
+////Reset////
 function reset() {
   serpent = document.querySelectorAll(".serpent");
 
@@ -167,5 +209,4 @@ function reset() {
   direction = "";
 
   start();
-  mouvementserpent();
 }

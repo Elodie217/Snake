@@ -4,10 +4,14 @@ html {
 
 body {
   margin: 0;
-  background-image: url(medias/2.png);
+  background-image: url(../medias/2.png);
   background-repeat: no-repeat;
   background-size: cover;
 }
+.backgroundcolor {
+  background-color: #72c65d;
+}
+
 header {
   width: 100%;
   color: white;
@@ -30,7 +34,6 @@ header {
   font-size: 40px;
   padding: 10px 20px;
   margin: 10px 20px 10px 50px;
-  background-color: #72c65d;
 }
 .pomme {
   width: 50px;
@@ -53,14 +56,13 @@ main {
 .sectiongauche {
   width: 25%;
 }
-.regles {
+.btnCommentJouer {
   color: white;
   text-align: center;
   padding: 10px 20px;
-  background-color: #72c65d;
   border-radius: 15px;
   width: 50%;
-  margin: 50px 0 0 40px;
+  margin: 70px 18% 0;
 }
 .btnCommentJouer:hover {
   cursor: pointer;
@@ -78,8 +80,13 @@ main {
 }
 
 .serpent {
-  background-color: #177400;
   z-index: 1;
+}
+.serpentvert {
+  background-color: #177400;
+}
+.serpentnoir {
+  background-color: black;
 }
 
 .invisibility {
@@ -87,7 +94,7 @@ main {
 }
 
 .fruit {
-  background-image: url(medias/pommerouge.png);
+  background-image: url(../medias/pommerouge.png);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -123,4 +130,9 @@ main {
   position: fixed;
   top: 0px;
   z-index: 2;
+}
+
+/*Bonus*/
+.bonus {
+  background-color: yellow;
 }
