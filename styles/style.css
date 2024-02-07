@@ -14,7 +14,6 @@ body {
 
 header {
   width: 100%;
-  color: white;
   display: flex;
   justify-content: space-between;
 }
@@ -28,12 +27,14 @@ header {
 .divpoints {
   display: flex;
   align-items: center;
-  margin-right: 5%;
+  margin-right: 10%;
 }
 .pointsstyle {
+  color: #177400;
   font-size: 40px;
   padding: 10px 20px;
-  margin: 10px 20px 10px 50px;
+  margin: 10px 0px 10px 50px;
+  text-shadow: 1px 2px 20px #ffffff;
 }
 .pomme {
   width: 50px;
@@ -133,6 +134,8 @@ main {
 }
 
 /*Bonus*/
-.bonus {
-  background-color: yellow;
+.malus {
+  background-image: url(../medias/champi4.png);
+  background-position: center;
+  background-size: cover;
 }
