@@ -1,8 +1,3 @@
-//Local storage//
-let highScoreaffichage = document.querySelector(".highScore");
-let highScore = localStorage.getItem("high-score");
-highScoreaffichage.innerText = highScore;
-
 //Varaibles
 let body = document.body;
 let x = 3;
@@ -23,23 +18,59 @@ let moyen = document.querySelector(".moyen");
 let difficile = document.querySelector(".difficile");
 let extreme = document.querySelector(".extreme");
 let menuniveaux = document.querySelector(".niveaux");
+let niveauxchoisi = "facile";
 
 facile.addEventListener("click", () => {
   vitesse = 200;
   menuniveaux.innerText = "Niveau facile";
+  niveauxchoisi = "facile";
+  updatehightscore();
 });
 moyen.addEventListener("click", () => {
   vitesse = 100;
   menuniveaux.innerText = "Niveau moyen";
+  niveauxchoisi = "moyen";
+  updatehightscore();
 });
 difficile.addEventListener("click", () => {
   vitesse = 80;
   menuniveaux.innerText = "Niveau difficile";
+  niveauxchoisi = "difficile";
+  updatehightscore();
 });
 extreme.addEventListener("click", () => {
   vitesse = 50;
   menuniveaux.innerText = "Niveau extême";
+  niveauxchoisi = "extreme";
+  updatehightscore();
 }); ///Je pense qu'on peut faire un objet ici ///
+
+//Local storage//
+let highScoreaffichage = document.querySelector(".highScore");
+let highScore = 0;
+
+function updatehightscore() {
+  switch (niveauxchoisi) {
+    case "facile":
+      nomjoueurstocker = localStorage.getItem("joueur-high-score-facile");
+      highScore = localStorage.getItem("high-score-facile");
+      break;
+    case "moyen":
+      nomjoueurstocker = localStorage.getItem("joueur-high-score-moyen");
+      highScore = localStorage.getItem("high-score-moyen");
+      break;
+    case "difficile":
+      nomjoueurstocker = localStorage.getItem("joueur-high-score-difficile");
+      highScore = localStorage.getItem("high-score-difficile");
+      break;
+    case "extreme":
+      nomjoueurstocker = localStorage.getItem("joueur-high-score-extreme");
+      highScore = localStorage.getItem("high-score-extreme");
+      break;
+  }
+  highScoreaffichage.innerText = `${nomjoueurstocker} ${highScore}`;
+}
+updatehightscore();
 
 /////Start/////
 function start() {
@@ -176,7 +207,7 @@ function mangerfruit() {
   if (x == fruitX && y == fruitY) {
     creerfruit();
     conterpoint++;
-    point.innerText = conterpoint;
+    point.innerText = `${nomjoueur} ${conterpoint}`;
     meilleurScore();
     creerserpent();
   }
@@ -185,22 +216,43 @@ function mangerfruit() {
 function meilleurScore() {
   if (conterpoint > highScore) {
     highScore = conterpoint;
-    highScoreaffichage.innerText = highScore;
-    localStorage.setItem("high-score", highScore);
+    highScoreaffichage.innerText = `${nomjoueur} ${highScore}`;
+    stockagenomjoueur = nomjoueur;
+
+    switch (niveauxchoisi) {
+      case "facile":
+        localStorage.setItem("joueur-high-score-facile", stockagenomjoueur);
+        localStorage.setItem("high-score-facile", highScore);
+        break;
+      case "moyen":
+        localStorage.setItem("joueur-high-score-moyen", stockagenomjoueur);
+        localStorage.setItem("high-score-moyen", highScore);
+        break;
+      case "difficile":
+        localStorage.setItem("joueur-high-score-difficile", stockagenomjoueur);
+        localStorage.setItem("high-score-difficile", highScore);
+        break;
+      case "extreme":
+        localStorage.setItem("joueur-high-score-extreme", stockagenomjoueur);
+        localStorage.setItem("high-score-extreme", highScore);
+        break;
+    }
+
+    // localStorage.setItem("high-score", highScore);
   }
 }
 
 ////Game Over////
 function gameover() {
   myStop();
-  alert("T'es mort !");
-  reset();
-  conterpoint = 0;
-  point.innerText = conterpoint;
+  affichergameover();
 }
 
 ////Reset////
 function reset() {
+  conterpoint = 0;
+  point.innerText = conterpoint;
+
   serpent = document.querySelectorAll(".serpent");
 
   serpent.forEach((element) => {
