@@ -15,6 +15,7 @@ let fondPopUp = document.querySelector(".reglePopUp");
 let gameoversection = document.querySelector(".gameover");
 let titregameover = document.querySelector(".titregameover");
 
+
 couleurserpent.forEach((element) => {
   element.classList.add("serpentvert");
 });

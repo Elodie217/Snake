@@ -69,6 +69,7 @@ function updatehightscore() {
       break;
   }
   highScoreaffichage.innerText = `${nomjoueurstocker} ${highScore}`;
+
 }
 updatehightscore();
 
@@ -234,11 +235,11 @@ function meilleurScore() {
         break;
       case "extreme":
         localStorage.setItem("joueur-high-score-extreme", stockagenomjoueur);
+
         localStorage.setItem("high-score-extreme", highScore);
         break;
     }
 
-    // localStorage.setItem("high-score", highScore);
   }
 }
 
