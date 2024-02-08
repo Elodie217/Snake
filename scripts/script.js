@@ -52,19 +52,24 @@ let highScore = 0;
 function updatehightscore() {
   switch (niveauxchoisi) {
     case "facile":
+      nomjoueurstocker = localStorage.getItem("joueur-high-score-facile");
       highScore = localStorage.getItem("high-score-facile");
       break;
     case "moyen":
+      nomjoueurstocker = localStorage.getItem("joueur-high-score-moyen");
       highScore = localStorage.getItem("high-score-moyen");
       break;
     case "difficile":
+      nomjoueurstocker = localStorage.getItem("joueur-high-score-difficile");
       highScore = localStorage.getItem("high-score-difficile");
       break;
     case "extreme":
+      nomjoueurstocker = localStorage.getItem("joueur-high-score-extreme");
       highScore = localStorage.getItem("high-score-extreme");
       break;
   }
-  highScoreaffichage.innerText = `Meilleur score ${highScore}`;
+  highScoreaffichage.innerText = `${nomjoueurstocker} ${highScore}`;
+
 }
 updatehightscore();
 
@@ -203,7 +208,7 @@ function mangerfruit() {
   if (x == fruitX && y == fruitY) {
     creerfruit();
     conterpoint++;
-    point.innerText = conterpoint;
+    point.innerText = `${nomjoueur} ${conterpoint}`;
     meilleurScore();
     creerserpent();
   }
@@ -212,37 +217,43 @@ function mangerfruit() {
 function meilleurScore() {
   if (conterpoint > highScore) {
     highScore = conterpoint;
-    highScoreaffichage.innerText = `Meilleur score ${highScore}`;
+    highScoreaffichage.innerText = `${nomjoueur} ${highScore}`;
+    stockagenomjoueur = nomjoueur;
+
     switch (niveauxchoisi) {
       case "facile":
+        localStorage.setItem("joueur-high-score-facile", stockagenomjoueur);
         localStorage.setItem("high-score-facile", highScore);
         break;
       case "moyen":
+        localStorage.setItem("joueur-high-score-moyen", stockagenomjoueur);
         localStorage.setItem("high-score-moyen", highScore);
         break;
       case "difficile":
+        localStorage.setItem("joueur-high-score-difficile", stockagenomjoueur);
         localStorage.setItem("high-score-difficile", highScore);
         break;
       case "extreme":
+        localStorage.setItem("joueur-high-score-extreme", stockagenomjoueur);
+
         localStorage.setItem("high-score-extreme", highScore);
         break;
     }
 
-    localStorage.setItem("high-score", highScore);
   }
 }
 
 ////Game Over////
 function gameover() {
   myStop();
-  alert("T'es mort !");
-  reset();
-  conterpoint = 0;
-  point.innerText = conterpoint;
+  affichergameover();
 }
 
 ////Reset////
 function reset() {
+  conterpoint = 0;
+  point.innerText = conterpoint;
+
   serpent = document.querySelectorAll(".serpent");
 
   serpent.forEach((element) => {

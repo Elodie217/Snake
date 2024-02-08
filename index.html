@@ -22,6 +22,16 @@
         <img src="medias/trophee2.png" alt="Trophée" class="trophee" />
       </div>
     </header>
+
+    <!--Page d'accueil-->
+    <section class="pagedaccueil invisibility">
+      <div class="joueur">
+        <label for="nom" class="labelnom">Rentre ton nom :</label>
+        <input type="text" name="nom" placeholder="Nagini" class="inputnom" />
+      </div>
+      <button class="btnStart">Start</button>
+    </section>
+
     <main>
       <!--Menus-->
       <section class="sectiongauche">
@@ -55,7 +65,7 @@
     </main>
 
     <!--Pop-up règle-->
-    <section class="reglePopUp backgroundcolor invisibility">
+    <section class="reglePopUp borderchange invisibility">
       <img
         src="medias/marque-de-croix.png"
         alt="Croix pour fermer"
@@ -63,19 +73,31 @@
         onclick="fermerCroix()"
       />
       <h2>Comment jouer ?</h2>
-      <p>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolores, quod
-        placeat nulla explicabo dolorum mollitia accusantium accusamus minus eos
-        doloremque cum ad consequatur optio. Corporis porro adipisci
-        necessitatibus accusantium suscipit?
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam nihil
-        obcaecati iure fuga itaque excepturi omnis architecto reprehenderit,
-        perspiciatis, et, eius recusandae? Voluptates, consequuntur.
-        Reprehenderit, earum. Cupiditate possimus aliquid rerum.
-      </p>
+      <div class="divflex">
+        <p class="pregle">Récupérez le plus de pomme possible</p>
+        <img src="medias/pommerouge.png" alt="Pomme" class="imgregle" />
+      </div>
+      <div class="divflex">
+        <img
+          src="medias/fleches.png"
+          alt="Flèche de clavier"
+          class="imgregle"
+        />
+        <p class="pregle">Déplacez vous avec les flèches du clavier</p>
+      </div>
+      <div class="divflex">
+        <p class="pregle">Mais attention aux champignons</p>
+        <img src="medias/champi4.png" alt="Champignon" class="imgregle" />
+      </div>
     </section>
     <div class="flou invisibility"></div>
+
+    <!--Game Over-->
+    <section class="gameover backgroundcolor invisibility">
+      <h2 class="titregameover">Game Over</h2>
+      <div class="scorefinal"></div>
+      <img src="medias/gameover.png" alt="Serpent mort" class="imggameover" />
+      <button class="btnrejouer">Rejouer</button>
+    </section>
   </body>
 </html>

@@ -8,9 +8,13 @@ let pommeplateau = document.querySelector(".fruit");
 let bcgplateau = document.querySelector(".plateau");
 let couleurserpent = document.querySelectorAll(".serpent");
 let couleurhover = document.querySelectorAll(".couleurhover");
-let borderpopup = document.querySelector(".reglePopUp");
+let borderpopup = document.querySelectorAll(".borderchange");
 let nommode = document.querySelector(".mode");
 let scorescouleurs = document.querySelectorAll(".pointsstyle");
+let fondPopUp = document.querySelector(".reglePopUp");
+let gameoversection = document.querySelector(".gameover");
+let titregameover = document.querySelector(".titregameover");
+
 
 couleurserpent.forEach((element) => {
   element.classList.add("serpentvert");
@@ -31,6 +35,7 @@ modeprairie.addEventListener("click", () => {
   });
 
   backgroundphoto.style.backgroundImage = "url(medias/2.png)";
+  fondPopUp.style.backgroundImage = "url(medias/4.png)";
   logo.src = "medias/logoclair2.png";
   pomme.src = "medias/pommerouge.png";
   pommeplateau.style.backgroundImage = "url(medias/pommerouge.png)";
@@ -53,7 +58,14 @@ modeprairie.addEventListener("click", () => {
 
   couleurmode = "serpentvert";
   mauvaisecouleurmode = "serpentnoir";
-  borderpopup.style.border = "2px solid #177400";
+
+  borderpopup.forEach((element) => {
+    element.style.border = "2px solid #177400";
+  });
+
+  gameoversection.style.backgroundImage = "url(medias/fond2.png)";
+  titregameover.style.color = "#177400";
+  btnrejouer.style.backgroundColor = "#177400";
 });
 
 ///////Mode Nuit///////
@@ -66,6 +78,8 @@ modenuit.addEventListener("click", () => {
   });
 
   backgroundphoto.style.backgroundImage = "url(medias/peaudeserpent.png)";
+  fondPopUp.style.backgroundImage = "url(medias/3.png)";
+
   logo.src = "medias/logosombre2.png";
   pomme.src = "medias/pommedore.png";
   pommeplateau.style.backgroundImage = "url(medias/pommedore.png)";
@@ -88,5 +102,12 @@ modenuit.addEventListener("click", () => {
 
   couleurmode = "serpentnoir";
   mauvaisecouleurmode = "serpentvert";
-  borderpopup.style.border = "2px solid black";
+
+  borderpopup.forEach((element) => {
+    element.style.border = "2px solid black";
+  });
+
+  gameoversection.style.backgroundImage = "url(medias/fond3.png)";
+  titregameover.style.color = "black";
+  btnrejouer.style.backgroundColor = "black";
 });
