@@ -14,15 +14,14 @@ let scorescouleurs = document.querySelectorAll(".pointsstyle");
 let fondPopUp = document.querySelector(".reglePopUp");
 let gameoversection = document.querySelector(".gameover");
 let titregameover = document.querySelector(".titregameover");
-
-couleurserpent.forEach((element) => {
-  element.classList.add("serpentvert");
-});
+let btnrejouer = document.querySelector(".btnrejouer");
 
 couleurhover.forEach((element) => {
   element.classList.add("couleurclairehover");
   element.classList.remove("couleursombrehover");
 });
+
+pommeplateau.style.backgroundImage = "url(medias/pommerouge.png)";
 
 ///////Mode Prairie///////
 
@@ -49,14 +48,6 @@ modeprairie.addEventListener("click", () => {
     element.classList.add("couleurclairehover");
     element.classList.remove("couleursombrehover");
   });
-
-  couleurserpent.forEach((element) => {
-    element.classList.add("serpentvert");
-    element.classList.remove("serpentnoir");
-  });
-
-  couleurmode = "serpentvert";
-  mauvaisecouleurmode = "serpentnoir";
 
   borderpopup.forEach((element) => {
     element.style.border = "2px solid #177400";
@@ -93,14 +84,6 @@ modenuit.addEventListener("click", () => {
     element.classList.remove("couleurclairehover");
     element.classList.add("couleursombrehover");
   });
-
-  couleurserpent.forEach((element) => {
-    element.classList.remove("serpentvert");
-    element.classList.add("serpentnoir");
-  });
-
-  couleurmode = "serpentnoir";
-  mauvaisecouleurmode = "serpentvert";
 
   borderpopup.forEach((element) => {
     element.style.border = "2px solid black";

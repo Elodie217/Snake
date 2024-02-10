@@ -183,6 +183,23 @@ main {
   grid-row-gap: 0px;
 }
 
+.commandesJeux {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  top: 47vh;
+  left: 45%;
+}
+.commandesJeux img {
+  width: 30%;
+  opacity: 70%;
+  margin-right: 40px;
+}
+.commandesJeux p {
+  font-size: 20px;
+  opacity: 70%;
+}
+
 .serpent {
   z-index: 1;
 }
@@ -198,7 +215,7 @@ main {
 }
 
 .fruit {
-  background-image: url(../medias/pommerouge.png);
+  /* background-image: url(../medias/pommerouge.png); */
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
