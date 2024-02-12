@@ -16,6 +16,7 @@ let gameoversection = document.querySelector(".gameover");
 let titregameover = document.querySelector(".titregameover");
 let btnrejouer = document.querySelector(".btnrejouer");
 
+
 couleurhover.forEach((element) => {
   element.classList.add("couleurclairehover");
   element.classList.remove("couleursombrehover");
