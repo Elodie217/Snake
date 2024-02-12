@@ -22,11 +22,12 @@ couleurhover.forEach((element) => {
   element.classList.remove("couleursombrehover");
 });
 
-pommeplateau.style.backgroundImage = "url(medias/pommerouge.png)";
+// pommeplateau.style.backgroundImage = "url(medias/pommerouge.png)";
 
 ///////Mode Prairie///////
 
 modeprairie.addEventListener("click", () => {
+  
   nommode.innerText = "Prairie";
 
   backgroundcolor.forEach((element) => {
