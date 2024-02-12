@@ -1,3 +1,9 @@
+//Class
+import Nouriture from "./class/Nouriture.js";
+let newpomme = new Nouriture();
+newpomme.positionAleatoire();
+newpomme.creerNouriture("fruit");
+
 //Varaibles
 let body = document.body;
 let x = 3;
@@ -6,8 +12,6 @@ let interval = "";
 let plateau = document.querySelector(".plateau");
 let direction = "";
 let serpent = [];
-let fruitX = "";
-let fruitY = "";
 let couleurmode = "serpentvert";
 let mauvaisecouleurmode = "serpentnoir";
 
@@ -43,13 +47,14 @@ extreme.addEventListener("click", () => {
   menuniveaux.innerText = "Niveau extême";
   niveauxchoisi = "extreme";
   updatehightscore();
-}); ///Je pense qu'on peut faire un objet ici ///
+});
 
 //Local storage//
 let highScoreaffichage = document.querySelector(".highScore");
 let highScore = 0;
 
 function updatehightscore() {
+  let nomjoueurstocker = "";
   switch (niveauxchoisi) {
     case "facile":
       nomjoueurstocker = localStorage.getItem("joueur-high-score-facile");
@@ -91,7 +96,8 @@ function start() {
   serpent[0].style.gridRow = y;
   serpent[1].style.gridColumn = x - 1;
   serpent[1].style.gridRow = y;
-  creerfruit();
+
+  document.querySelector(".commandesJeux").classList.remove("invisibility");
 }
 
 start();
@@ -107,6 +113,7 @@ document.addEventListener("keydown", (event) => {
   if (nomTouche == "ArrowUp" && direction !== "down") {
     myStop();
     direction = "up";
+    document.querySelector(".commandesJeux").classList.add("invisibility");
 
     interval = setInterval(() => {
       y = y - 1;
@@ -117,6 +124,8 @@ document.addEventListener("keydown", (event) => {
   } else if (nomTouche == "ArrowDown" && direction !== "up") {
     myStop();
     direction = "down";
+    document.querySelector(".commandesJeux").classList.add("invisibility");
+
     interval = setInterval(() => {
       y = y + 1;
       sortieSerpent();
@@ -126,6 +135,8 @@ document.addEventListener("keydown", (event) => {
   } else if (nomTouche == "ArrowRight" && direction !== "left") {
     myStop();
     direction = "right";
+    document.querySelector(".commandesJeux").classList.add("invisibility");
+
     interval = setInterval(() => {
       x = x + 1;
       sortieSerpent();
@@ -135,6 +146,8 @@ document.addEventListener("keydown", (event) => {
   } else if (nomTouche == "ArrowLeft" && direction !== "right") {
     myStop();
     direction = "left";
+    document.querySelector(".commandesJeux").classList.add("invisibility");
+
     interval = setInterval(() => {
       x = x - 1;
       sortieSerpent();
@@ -158,6 +171,25 @@ function creerserpent() {
   positionserpent();
   return newSerpent;
 }
+
+let modeprairie = document.querySelector(".modeprairie");
+let modenuit = document.querySelector(".modenuit");
+modeprairie.addEventListener("click", () => {
+  couleurserpent.forEach((element) => {
+    element.classList.add("serpentvert");
+    element.classList.remove("serpentnoir");
+    couleurmode = "serpentvert";
+    mauvaisecouleurmode = "serpentnoir";
+  });
+});
+modenuit.addEventListener("click", () => {
+  couleurserpent.forEach((element) => {
+    element.classList.add("serpentnoir");
+    element.classList.remove("serpentvert");
+    couleurmode = "serpentnoir";
+    mauvaisecouleurmode = "serpentvert";
+  });
+});
 
 function sortieSerpent() {
   if (x <= 48 && x > 0 && y <= 25 && y > 0) {
@@ -191,22 +223,15 @@ function serpentSeMordLaQueue() {
 
 ////Fruits////
 
-function creerfruit() {
-  let fruit = document.querySelector(".fruit");
-
-  fruitX = Math.floor(Math.random() * (48 - 1) + 1);
-  fruitY = Math.floor(Math.random() * (25 - 1) + 1);
-
-  fruit.style.gridColumn = fruitX;
-  fruit.style.gridRow = fruitY;
-}
-
 let point = document.querySelector(".points");
 let conterpoint = 0;
 
 function mangerfruit() {
+  let fruitX = document.querySelector(".fruit").style.gridColumn;
+  let fruitY = document.querySelector(".fruit").style.gridRow;
   if (x == fruitX && y == fruitY) {
-    creerfruit();
+    newpomme.positionAleatoire();
+    newpomme.positionNourriture("fruit");
     conterpoint++;
     point.innerText = `${nomjoueur} ${conterpoint}`;
     meilleurScore();
@@ -214,11 +239,12 @@ function mangerfruit() {
   }
 }
 
+//////////Mailleur Score ///////////
 function meilleurScore() {
   if (conterpoint > highScore) {
     highScore = conterpoint;
     highScoreaffichage.innerText = `${nomjoueur} ${highScore}`;
-    stockagenomjoueur = nomjoueur;
+    let stockagenomjoueur = nomjoueur;
 
     switch (niveauxchoisi) {
       case "facile":
@@ -240,6 +266,8 @@ function meilleurScore() {
         break;
     }
 
+    localStorage.setItem("high-score", highScore);
+
   }
 }
 
@@ -260,6 +288,87 @@ function reset() {
     element.remove();
   });
   direction = "";
+  newpomme.positionAleatoire();
 
   start();
 }
+
+////////////////Malus///////////////////////////
+
+let divmalusX = 0;
+let divmalusY = 0;
+
+let newchampi = new Nouriture("malus");
+newchampi.creerNouriture("malus");
+
+setInterval(() => {
+  // positionmalus();
+  newchampi.positionAleatoire();
+  newchampi.positionNourriture("malus");
+}, 10000);
+
+function activermalus() {
+  divmalusX = newchampi.positionX;
+  divmalusY = newchampi.positionY;
+
+  if (x == divmalusX && y == divmalusY) {
+    vitesse = vitesse / 2;
+
+    setTimeout(function () {
+      vitesse = vitesse * 2;
+    }, 3000);
+    newchampi.positionAleatoire();
+    newchampi.positionNourriture("malus");
+  }
+}
+
+let intervalmalus = setInterval(() => {
+  activermalus();
+}, 20);
+
+//////////////////Pop Up////////////////
+let fenetrePopup = document.querySelector(".reglePopUp");
+let fondFlou = document.querySelector(".flou");
+let croixFermee = document.querySelector(".croixfermee");
+let boutonCommentJouer = document.querySelector(".btnCommentJouer");
+
+boutonCommentJouer.addEventListener("click", ouvrirpopup);
+croixFermee.addEventListener("click", fermerCroix);
+
+function ouvrirpopup() {
+  console.log("ouvrir popup");
+  fenetrePopup.classList.remove("invisibility");
+  fondFlou.classList.remove("invisibility");
+}
+function fermerCroix() {
+  fenetrePopup.classList.add("invisibility");
+  fondFlou.classList.add("invisibility");
+}
+
+///////////Page d'accueil//////////////
+
+let pagedaccueil = document.querySelector(".pagedaccueil");
+let btnStart = document.querySelector(".btnStart");
+let inputnom = document.querySelector(".inputnom");
+let nomjoueur = null;
+
+btnStart.addEventListener("click", () => {
+  nomjoueur = inputnom.value;
+  pagedaccueil.classList.add("invisibility");
+});
+
+//////////Game Over/////////////
+
+let gameoverpopup = document.querySelector(".gameover");
+function affichergameover() {
+  gameoverpopup.classList.remove("invisibility");
+  let scorefinal = document.querySelector(".scorefinal");
+  scorefinal.innerText = `Ton score est de ${conterpoint} points`;
+}
+
+let btnrejouer = document.querySelector(".btnrejouer");
+
+btnrejouer.addEventListener("click", () => {
+  reset();
+  gameoverpopup.classList.add("invisibility");
+});
