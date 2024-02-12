@@ -215,7 +215,7 @@ main {
 }
 
 .fruit {
-  /* background-image: url(../medias/pommerouge.png); */
+  background-image: url(../medias/pommerouge.png);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;

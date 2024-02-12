@@ -11,4 +11,4 @@
 - 2 modes 🌿/🌑
 - Affichage du score du meilleur joueur de chaque niveau 🏆
 
-# A vous de jouer :
+# A vous de jouer : [Cliquez pour jouer](https://snake130613.netlify.app/)
