@@ -5,7 +5,7 @@ newpomme.positionAleatoire();
 newpomme.creerNouriture("fruit");
 
 //Varaibles
-let body = document.body;
+console.log("Bienvenue dans la console de ce Snake ! 🐍");
 let x = 3;
 let y = 3;
 let interval = "";
@@ -336,7 +336,6 @@ boutonCommentJouer.addEventListener("click", ouvrirpopup);
 croixFermee.addEventListener("click", fermerCroix);
 
 function ouvrirpopup() {
-  console.log("ouvrir popup");
   fenetrePopup.classList.remove("invisibility");
   fondFlou.classList.remove("invisibility");
 }
