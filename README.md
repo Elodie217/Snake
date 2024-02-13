@@ -1,9 +1,9 @@
 # Snake 🐍
 
-## 🎮 **Règle du jeux :**
+## 🎮 **Règles du jeu :**
 
 - Objectif 🎯 : récupérer le plus de pomme possible 🍎
-- Pour cela il suffit de se déplacer avec les flèches du clavier ( ←, ↑, ↓, → ), tout en prennant garde à ne pas manger les champignons 🍄
+- Pour cela, il suffit de se déplacer avec les flèches du clavier ( ←, ↑, ↓, → ), tout en prenant garde à ne pas manger les champignons 🍄
 
 ## 🎮 **Jeux :**
 
@@ -11,4 +11,4 @@
 - 2 modes 🌿/🌑
 - Affichage du score du meilleur joueur de chaque niveau 🏆
 
-# A vous de jouer : [Cliquez pour jouer](https://snake130613.netlify.app/)
+# [À vous de jouer](https://snake130613.netlify.app/)
